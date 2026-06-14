@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio & Resume of Tariq Bakhsh - CE Technician specializing in system imaging, security fundamentals, and technical operations.">
-  <title>Tariq Bakhsh | CE Technician</title>
+  <meta name="description" content="Portfolio & Resume of Tariq Bakhsh - IT Systems Analyst professional.">
+  <title>Tariq Bakhsh | CE Technician & Systems Analyst</title>
   
-  <!-- Modern sans-serif font for clean readability -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,11 +77,19 @@
     .menu-toggle span { width: 24px; height: 2px; background: var(--text-main); transition: var(--transition-fast); border-radius: 2px; }
 
     /* =========================================
-       HERO SECTION
+       HERO SECTION & BADGES
        ========================================= */
     .hero {
       min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 5rem;
       background: radial-gradient(circle at 50% 30%, rgba(251, 146, 60, 0.1) 0%, transparent 60%);
+      /* Ensure hero is visible instantly with a pure CSS animation instead of JS */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: loadFadeUp 0.8s ease-out forwards;
+    }
+
+    @keyframes loadFadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 0.5rem; line-height: 1.1; }
@@ -97,9 +104,26 @@
       display: inline-block; padding: 0.9rem 2rem; background: var(--gradient-main); color: #fff;
       font-weight: 600; border-radius: var(--radius-md); box-shadow: var(--shadow-glow);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      margin-bottom: 2rem;
     }
 
     .cta-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 25px rgba(251, 146, 60, 0.45); }
+
+    /* Badges Flex Container */
+    .badges-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .badges-container img {
+      height: 270px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
 
     /* =========================================
        SECTIONS & UTILITIES
@@ -110,14 +134,14 @@
     }
     .section-title::after { content: ''; position: absolute; bottom: -8px; left: 25%; width: 50%; height: 4px; background: var(--gradient-main); border-radius: 99px; }
 
-    /* Scroll Fade Animation */
+    /* Scroll Fade Animation for lower sections */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
     /* =========================================
        EXPERIENCE TIMELINE (INTERACTIVE)
        ========================================= */
-    .timeline-container { position: relative; max-width: 700px; margin: 0 auto; }
+    .timeline-container { position: relative; max-width: 800px; margin: 0 auto; }
     .timeline-line { position: absolute; left: 24px; top: 10px; bottom: 0; width: 3px; background: #2d3a52; border-radius: 99px; }
 
     .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 56px; cursor: pointer; }
@@ -138,14 +162,14 @@
 
     /* Expandable Details */
     .timeline-details { max-height: 0; overflow: hidden; opacity: 0; transition: max-height var(--transition-smooth), opacity var(--transition-fast); padding-left: 8px; }
-    .timeline-item.active .timeline-details { max-height: 300px; opacity: 1; margin-top: 0.5rem; }
+    .timeline-item.active .timeline-details { max-height: 1000px; opacity: 1; margin-top: 0.5rem; }
     .timeline-details ul { list-style-type: disc; padding-left: 1.2rem; color: var(--text-muted); }
     .timeline-details li { margin-bottom: 0.4rem; font-size: 0.95rem; }
 
     /* =========================================
        SKILLS (INTERACTIVE BADGES)
        ========================================= */
-    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 900px; margin: 0 auto; }
     .skill-badge {
       background: var(--bg-secondary); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 600; color: var(--accent-start);
       border: 1px solid transparent; position: relative; overflow: hidden; transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
@@ -180,12 +204,12 @@
       .timeline-line { left: 24px; }
       .hero-content h1 { font-size: 2.5rem; }
       .section-title { font-size: 1.75rem; }
+      .badges-container img { height: 200px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="#hero" class="logo">Tariq Bakhsh</a>
@@ -204,59 +228,106 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="hero" class="hero fade-in">
+  <header id="hero" class="hero">
     <div class="container hero-content">
       <h1>Tariq Bakhsh</h1>
-      <p class="tagline">CE Technician</p>
+      <p class="tagline">CE Technician & Systems Analyst</p>
       <div class="location">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
         Colorado Springs, CO
       </div>
+      <br>
       <a href="mailto:Tariq@Bakhsh.org" class="cta-btn">Get in Touch</a>
-    </div>
+      
+     <div class="badges-container">
+        <a href="https://credsverse.com/credentials/9b22230c-efe3-4913-ad64-f083ad0dd6fe" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.certifier.io/a7dc58e7-1c64-4bd2-96c8-a5c17149ddf7/credentials/01kty8xmvmfvt0hmmkwjvt7n0a/designs/01jh3jgweje39ftjbmhcd2bpjz/O7DG4CWASm.png" alt="Security+ Badge" />
+        </a>
+        
+        <iframe src="https://www.credly.com/embedded_badge/946b544f-6040-48eb-abb7-21299af62589" width="150" height="270" frameborder="0" scrolling="no" style="border: none; border-radius: var(--radius-sm);"></iframe>
+      </div>
   </header>
 
-  <!-- Main Content -->
   <main>
     
-    <!-- Experience Section -->
     <section id="experience" class="section fade-in">
       <h2 class="section-title">Professional Experience</h2>
       
       <div class="timeline-container">
         <div class="timeline-line"></div>
 
-        <!-- Role 1 -->
         <article class="timeline-item active" data-toggle="exp-1">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <div class="role-header">
-              <h3>CE Technician</h3>
-              <span>HP Inc. | 04/2023 – Present</span>
+              <h3>Customer Engineer Technician</h3>
+              <span>HP Inc. | April 2023 - PRESENT | Colorado Springs, CO</span>
             </div>
           </div>
           <div class="timeline-details" id="exp-1">
             <ul>
-              <li>Developed a Server environment to save and serve Windows images as full flash images.</li>
-              <li>Created WinPE image to capture entire SSD drive as an FFU image and upload it to a remote server.</li>
+              <li>Configured Enterprise Server from a fresh Windows Server Install to Capture and Deploy FFU Images of client computers through a PXE environment.</li>
+              <li>Configured and administered Active Directory, DNS, and DHCP internally for secure deployments.</li>
+              <li>Responsible for system diagnostics and repairs under a CDHS contract for 10,000+ employees across the state of Colorado.</li>
+              <li>Managed work-order cases from creation to ticket closure.</li>
+              <li>Performed analysis, configuration, and administration of a fresh server environment for capturing and deploying OS images.</li>
+              <li>Assisted in the planning, design, development, and implementation of PowerShell scripts to automate the system imaging process from start to finish.</li>
+              <li>Reconfiguring existing systems and network infrastructure to enable simultaneous OS deployment to 40+ endpoints, optimizing workflow efficiency.</li>
+              <li>Performed new deployments and service calls to over 50 unique sites and campuses across the state of CO.</li>
+              <li>Up to 40,000 devices accounted for and maintained at any time.</li>
+              <li>Trained and mentored 4+ colleagues in working environments.</li>
+              <li>Followed IMACD Framework for device management.</li>
+              <li>HIPAA Compliant practices followed daily.</li>
+              <li>Consistently recognized for excellent customer service.</li>
             </ul>
           </div>
         </article>
 
-        <!-- Role 2 -->
         <article class="timeline-item" data-toggle="exp-2">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <div class="role-header">
-              <h3>HP Inc. Contractor</h3>
-              <span>TekSystems | 02/2021 – 04/2023</span>
+              <h3>HP Technician</h3>
+              <span>TEKSYSTEMS Inc. | March 2021 - April 2023 | Colorado Springs, CO</span>
             </div>
           </div>
           <div class="timeline-details" id="exp-2">
             <ul>
-              <li>Maintained a perfect record of attendance through rigorous scheduling and prioritization.</li>
-              <li>Learned various roles across the team to fill in wherever needed, ensuring operational continuity during peak demand.</li>
+              <li>Contractor for HP until hired on directly.</li>
+              <li>Worked on CDHS contract alongside HP employees to deploy, service, and replace the 30,000 to 40,000 leased assets across the state of Colorado.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-toggle="exp-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="role-header">
+              <h3>Computer Engineer</h3>
+              <span>Twitch Partner Channel | 2020</span>
+            </div>
+          </div>
+          <div class="timeline-details" id="exp-3">
+            <ul>
+              <li>Performed basic analysis of the daily use and administration of hardware and software systems through regular audits.</li>
+              <li>Identified root causes of potential system vulnerabilities, scheduling preventative updates and upgrades to ensure continuous operation.</li>
+              <li>Designed a secure backup database, managing data integrity and generating data extracts for safe backup retention and reliance.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-toggle="exp-4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="role-header">
+              <h3>Wheel Courier</h3>
+              <span>Alloy Wheel Repair Pro | November 2017 - July 2020 | Colorado Springs, CO</span>
+            </div>
+          </div>
+          <div class="timeline-details" id="exp-4">
+            <ul>
+              <li>Completed delivery and installation of custom wheels and rims.</li>
+              <li>Engaged with 5-15 clients a day, while ensuring a high customer satisfaction at each interaction.</li>
             </ul>
           </div>
         </article>
@@ -264,20 +335,28 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section fade-in">
       <h2 class="section-title">Core Skills</h2>
       <div class="skills-grid">
-        <span class="skill-badge">JavaScript</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">Data Analysis</span>
-        <span class="skill-badge">CompTIA Sec+</span>
-        <span class="skill-badge">System Imaging</span>
-        <span class="skill-badge">Network Troubleshooting</span>
+        <span class="skill-badge">End User Training</span>
+        <span class="skill-badge">Ticket Resolution</span>
+        <span class="skill-badge">Change Management</span>
+        <span class="skill-badge">Reporting & Data Analysis</span>
+        <span class="skill-badge">Workflow Analysis</span>
+        <span class="skill-badge">Systems Configuration & administration (Windows Server 2022)</span>
+        <span class="skill-badge">PowerShell Scripting</span>
+        <span class="skill-badge">Ticket Management</span>
+        <span class="skill-badge">Hardware & Software Troubleshooting</span>
+        <span class="skill-badge">HIPAA Compliance</span>
+        <span class="skill-badge">Microsoft Office</span>
+        <span class="skill-badge">Hardware Testing and Repairs</span>
+        <span class="skill-badge">Network Port Management</span>
+        <span class="skill-badge">DNS + DHCP Configuration</span>
+        <span class="skill-badge">Linux Command</span>
+        <span class="skill-badge">FFU Captures and Deployments</span>
       </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section fade-in">
       <h2 class="section-title">About Me & Off-the-Clock</h2>
       <div class="about-content">
@@ -287,16 +366,14 @@
 
   </main>
 
-  <!-- Footer -->
   <footer id="contact">
     <div class="footer-links">
-      <a href="https://www.linkedin.com/in/tarique-bakhsh-166111202/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="#" target="_blank" rel="noopener noreferrer">GitHub / Portfolio</a>
+      <a href="https://www.linkedin.com/in/tariqbakhsh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://Bakhsh.org" target="_blank" rel="noopener noreferrer">Portfolio</a>
     </div>
     <p class="copyright">&copy; <span id="year"></span> Tariq Bakhsh. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       
